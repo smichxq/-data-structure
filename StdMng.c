@@ -145,7 +145,7 @@ int main(){
     add(head,"smith",1,"1222","male",100,100);
     add(head,"smith",2,"1222","male",100,100);
     del(head,2);
-    add(head,"smith",1,"1222","male",100,100);
+    //add(head,"smith",1,"1222","male",100,100);
     print(head);
 
     return 0;
