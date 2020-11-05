@@ -44,7 +44,7 @@ int fr(Head* head){
         }
         if (flag%5 == 0)
         {
-            /* code */
+            
         }
         
         
