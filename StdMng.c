@@ -13,9 +13,10 @@ typedef struct Std
 }Std;
 
 typedef struct Head{
+    char* stdNum;
     Std* f;
     Std* r;
-    char* stdNum;
+    
 }Head;
 
 Head* init(){
@@ -142,11 +143,12 @@ void print(Head* head){
 int main(){
     Head* head = NULL;
     head = init();
-    add(head,"smith",1,"1222","male",100,100);
-    add(head,"smith",2,"1222","male",100,100);
-    del(head,2);
+    printf("a");
     //add(head,"smith",1,"1222","male",100,100);
-    print(head);
+    //add(head,"smith",2,"1222","male",100,100);
+    //del(head,2);
+    //add(head,"smith",1,"1222","male",100,100);
+    //print(head);
 
     return 0;
 }
