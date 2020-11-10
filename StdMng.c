@@ -126,15 +126,38 @@ int add(Head* head,char* name,long id,char* class,int grade,char* sex,int A,int 
 //删
 int del(Head* head,long id){
     Std* p = head->f;
-    Std* tempP = NULL;
+    Std* tempP = p;
     while (p)
     {
-        if(p->id == id){
-            tempP->next = p->next;
+
+        //p为第一个
+        if (p->id == id && p == head->next)
+        {
+            head->next = p->next;
+            p->next->front = (Std*)head;
             free(p);
             return 1;
         }
-        tempP = p;
+        
+
+
+        //p不为末尾
+        if (p->id == id && p->next){
+
+            p->front->next = p->next;
+            p->next->front = p->front;
+            free(p);
+            
+            return 1;
+        }
+        //p为末尾
+        if (p->id == id && !p->next)
+        {
+            p->front->next = p->next;
+            free(p);
+            return 1;
+        }
+        
         p = p->next;
     }
     return 0;
@@ -293,7 +316,7 @@ void sort(Head* head){
 
 void sort(Head* head){
     Std* MAX = NULL;
-    //Std* MAXf = NULL;//用双链表表示
+    
 
     int flag = 1;
 
@@ -415,6 +438,8 @@ int main(){
     print(head);
     sort(head);
     printf("sorted: \n");
+    print(head);
+    del(head,1);
     print(head);
 
 
