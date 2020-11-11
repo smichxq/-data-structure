@@ -28,7 +28,6 @@ typedef struct Head{
 Head* init(){
     Head* head = NULL;
     Head head1;
-    //head = (Head*)malloc(sizeof(head));  //参数为Head指针为什么会出错？
 
     head = (Head*)malloc(sizeof(head1));        
 
@@ -38,32 +37,9 @@ Head* init(){
     head->next = NULL;
     return head;
     
-    //head->next = (Std*)malloc(sizeof(Std));
 
 }
-/*
-int fr(Head* head){
-    FILE* fr = fopen("Std.txt","r");
-    char ch;        //并不是字符串
-    int flag = 0;
-    int count = 0;
-    while ((ch=getch(fr))!=EOF)
-    {
-        if(ch==' ')
-        {
-            flag++;
-        }
-        if (flag%5 == 0)
-        {
-            
-        }
-        
-        
-        
-    }
-    
-}
-*/
+
 //增
 int add(Head* head,char* name,long id,char* class,int grade,char* sex,int A,int B){
     Std s;
@@ -204,115 +180,7 @@ int sch(Head* head,long id){
     return 0;
 
 }
-//排
-/*
-void sort(Head* head){
-    Std* min = NULL;
-    
-    while (head->f)
-    {
-        min = head->f;
-        head->r = head->f;
 
-        while (head->r)
-        {
-            if(head->r->id < min->id)
-            {
-                min = (head->r);
-
-            }
-            head->r = head->r->next;
-        }
-
-        if (min == head->f)
-        {
-            if (head->f->next == NULL)
-            {
-                head->f = head->f->next;
-                continue;
-            }
-            
-            head->f = head->f->next;
-            continue;
-        }
-        
-        if (head->f->next == NULL)
-        {
-            head->f = head->f->next;
-            continue;
-        }
-        if (head->f->next == min)
-        {
-            if (min->next == NULL)
-            {
-                head->f->front->next = min;
-                head->f->next = min->next;
-                min->front = head->f->front;
-                min->next = head->f;
-                head->f->front = min;
-                head->f = head->f->next;
-                continue;
-            }
-
-            if (min->next != NULL)
-            {
-                head->f->front->next = min;//没有将min成功赋值
-                head->f->next = min->next;
-                min->next->front = head->f;
-                min->front = head->f->front;
-                min->next = head->f;
-                head->f->front = min;
-
-                head->f = head->f->next;
-                continue;
-            }
-
-            
-            
-        }
-        if (min->next == NULL)
-        {
-            head->f->front->next = min;
-            head->f->next = min->front;
-            min->front = head->f->front;
-            head->f->front = head->f->next;
-            head->f->next = NULL;
-            head->f->front->front = min;
-            head->f->front->next = head->f;
-            head->f = min;
-            head->f = head->f->next;
-            continue;
-
-        }
-
-        if (min->next != NULL)
-        {
-            head->f->front->next = min;
-            min->next->front = head->f;
-            min->front = head->f->front;
-            head->f->front = min->next;
-            
-            head->f->front = head->f->next;
-            head->f->next = min->next;
-            min->next = head->f->front;
-            min->next->front = min;
-            min->next->next = head->f;
-
-            head->f = head->f->next;
-            continue;
-        }
-        
-        
-        
-        
-        
-    }
-    
-  
-
-
-}
-*/
 
 void sort(Head* head){
     Std* MAX = NULL;
@@ -423,8 +291,6 @@ int main(){
     Head* head = NULL;
 
     head = init();
-    //fflush(stdout);
-    //printf("11");
 
     add(head,"smith",5,"计1804",1,"male",100,100);
     add(head,"smith",1,"1222",1,"male",100,100);
