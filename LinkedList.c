@@ -8,6 +8,7 @@ typedef struct LinkNode{
     struct LinkNode *p;
 }LN,*LNP;
 
+//链表头指针
 LNP Head;
 
 //头插法
@@ -118,15 +119,81 @@ int VSearch(char Value){
     
 }
 
+/*链表的逆置
+    p         c       n
+上一个结点 当前结点 下一个结点
+
+核心思想
+1.当前节点指向上一个结点
+2.p开始移动到当前节点c
+3.当前结点c移动到下一个结点n
+4.检查c移动后是否为NULL，如果是，则逆置完毕，反之继续逆置
+5.下一个结点n移动到当前结点c的下一个(检查溢出)
+
+注意事项:
+1.指针c移动前，如果n指向了结尾NULL，当c移动到下一个后，步骤5会溢出！
+2.2个以及以下数量的链表不适用以上操作
+*/
+
+void ReList(){
+    //链表头指针
+    LNP p = Head;
+
+    //跳过头节点
+    p = p->p;
+
+    //初始化三个指针
+    LNP l,c,n;
+
+    //l,c,n分别指向第1，2，3个元素
+    l = p;
+    c = l->p;
+    n = c->p;
+
+    //循环逆置部分
+    while (1){
+        //当前结点指向前一个
+        c->p = l;
+        
+        //前一个指针移动到当前结点
+        l = c;
+
+        //当前指针移动到后一个
+        c = n;
+
+        //判断当前指针移动后是否为结尾NULL
+        if (!c){break;}//从L开始遍历，因为当前指针c为NULL，那么前一个指针l一定是最后一个结点
+        
+        //指针n移动到当前指针c后一个
+        n = c->p;
+    }
+
+    //循坏输出
+    while (1){
+
+        printf("%c",l->Data);
+        
+        //先输出最后一个值，再退出
+        if (l==p){break;}
+
+        l = l->p;
+    }
+    
+
+
+}
+
 int main(){
     LNP p;
     int Positopn;
     Init('B');
     Print(Head);
+    ReList();
     //p = PSearch(5);
     //printf("%c",p->Data);
-    Positopn = VSearch('G');
-    printf("%d \n",Positopn);
+    // Positopn = VSearch('G');
+    // printf("%d \n",Positopn);
+
       
     return 0;
 }
